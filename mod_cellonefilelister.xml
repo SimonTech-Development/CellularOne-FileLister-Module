@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.9.2"
+	client="site"
+	method="upgrade">
+	<name>CellularOne File Lister</name>
+	<author>SimonTech</author>
+	<creationDate>January 2019</creationDate>
+	<copyright>Copyright (C) 2019 CellularOne. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>tech@teucg.com</authorEmail>
+	<authorUrl>http://simontech.me</authorUrl>
+	<version>1.0.0</version>
+	<description>A CellularOne module that will list files from a directory set in the settings. Will allow a user to list the given directory fetched from the parameter settings.</description>
+	<files>
+		<filename module="mod_cellonefilelister">mod_cellonefilelister.php</filename>
+		<filename>CHANGELOG.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>mod_cellonefilelister.css</filename>
+		<folder>tmpl</folder>
+		<folder>elements</folder>
+		<folder>images</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_cellonefilelister.ini</language>
+	</languages>
+	<updateservers>
+
+		<server type="extension" priority="1" name="CelloneFileLister Update">http://www.simontech.me/module_releases/cellularone-filelister/cellone_filelister.xml</server>
+	</updateservers>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="cofl_dirlocation" type="text" default="./images/" label="Default Directory" description="This is a default directory that will be listed."/>
+				<field name="cofl_basepath" type="text" default="" label="Web server base path (http://xyz...)" description="You need to add the baseurl for teh above directory, inluding the directory to use for creating the web-links. It must start with http/https or ftp. E.g. if your directory to list is ./images in your Joomla root this should be http://www.mysamplesite.com/images/"/>
+				<field name="cofl_maxfiles" type="text" default="20" label="Max. files to list" description="This is the maximum allowed files to list. Set it to zero for no limit."/>
+				<field name="cofl_next" type="radio" default="0" label="Use Next button" description="Add Next/Previous buttons if list exceeds Max. files to list.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_showfilesize" type="radio" default="0" label="Show file size" description="Will add teh filesize after the file name.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_maxheight" type="text" default="0" label="Max. box height (in pixels)" description="This is the maximum allowed height for the file list box in pixels. Set it to zero to let it grow."/>
+				<field name="cofl_bgcolor" type="text" default="#e8edf1" label="Background color" description="The background color of the file list box."/>
+				<field name="spacer01" type="spacer" default="" label="" description=""/>
+				<field name="cofl_onlyimg" type="radio" default="0" label="List only images" description="List only images or all files in directory.">
+					<option value="0">All</option>
+					<option value="1">Images</option>
+				</field>
+				<field name="cofl_imgthumbs" type="radio" default="0" label="Use thumbnails" description="Use thumbnails for images. Select Only to not show file-name, only thumb-nail image.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+					<option value="2">Only</option>
+				</field>
+				<field name="cofl_thumbheight" type="text" default="30" label="Max. thumbnail height (in pixels)" description="This is the maximum allowed height for a thumbnail."/>
+				<!--field name="cofl_thumbwidth" type="text" default="30" label="Max. thumbnail width (in pixels)" description="This is the maximum allowed width for a thumbnail."/-->
+				<field name="cofl_thumbkeepaspect" type="radio" default="1" label="Keep aspect ratio of thumbnail" description="Use thumbnails in correct aspect ratio, else they will be resized into max. height/width.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_listdir" type="radio" default="0" label="List directories" description="Also list sub-directories ontop of the files.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_browsedir" type="radio" default="0" label="Browse sub-directory" description="Allow the user to enter sub-directories.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="spacer02" type="spacer" default="" label="" description=""/>
+				<field name="cofl_useusernameddir" type="radio" default="0" label="Use user named directory" description="This will show the logged on users files instead of the default path given above.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_usernameddirdefault" type="radio" default="0" label="ONLY show user named directory" description="Will omit the default directory from directory list. Directory list will only contain the users own files, i.e. Default Directory above will never be used!.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>				<field name="cofl_userlocation" type="text" default="./users/" label="User named directories root path" description="This is the directory where uploaded files for user specific files are placed (NB! Server path, not web URL). E.g. the user Anders files would be under ./users/Anders/."/>
+				<field name="cofl_basepathusr" type="text" default="" label="Web server users path (http://xyz...)" description="If your Default User Directory lies outside of the Joomla web-root or you are using sub-domains you need to add the baseurl, inluding the directory to use for creating the web-links. It must start with http/https or ftp"/>
+				<field name="spacer03" type="spacer" default="" label="" description=""/>
+				<field name="" type="donate" default="" label="Do you like it?" description="Feel like showing your appreciation? Build: 1.0.0" addfieldpath="/modules/mod_cellonefilelister/elements"/>
+			</fieldset>
+		</fields>
+		<fields name="params" addfieldpath="/modules/mod_cellonefilelister/elements">
+			<fieldset name="advanced">
+				<field name="cofl_allowupdir" type="radio" default="0" label="Allow moving up in directories" description="This is NOT recommended! This will allow a user to add a path for moving backwards in directorystructure, beyond your Default Directory, using the AJAX query URL.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_allowdelete" type="radio" default="0" label="Allow delete files" description="This is NOT recommended! To allow delete of files you must enable this first.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field name="level_delete" type="groups"
+						 required="false"
+						 label="MOD_CELLONEFILELISTER_SELECT_DELETE_GROUP_LABEL" description="MOD_CELLONEFILELISTER_SELECT_DELETE_GROUP_DESC" />
+
+				<field name="cofl_movedeleted" type="radio" default="0" label="Move instead of delete" description="If you want to move files instead of deleting them to the directory below.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_movedeletedpath" type="text" default="./cofl_deletedfiles" label="Move to directory for deleted" description="If you want to move files instead of delete they will end up in this directory. If the directory does not exist it will be created. Files will get a unique file extension to not overwrite existing files."/>
+				<field name="cofl_disablegdthreshold" type="text" default="0" label="GD library size limit" description="This is the threshold (max size in bytes) for where GD library should not be used. Set to zero for no threshold."/>
+				<field name="spacer04" type="spacer" default="" label="Cache handling" description=""/>
+				<field name="cache" type="list" default="1" label="Joomla Cache" description="Here you can enable/disable Joomla caching">
+					<option value="1">Use global</option>
+					<option	value="0">No caching</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="Cache time" description="Cache time" />
+				<field name="cachemode" type="hidden" default="itemid">
+					<option value="itemid"></option>
+				</field>
+
+
+				</fieldset>
+
+		</fields>
+		<fields name="params">
+			<fieldset name="other" label="Other Settings">
+				<field name="cofl_showdir" type="radio" default="1" label="Show directory label" description="Show the path of the directory listed.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+					<option value="2">Hide all</option>
+				</field>
+				<field name="cofl_showicon" type="radio" default="1" label="Show icons" description="Show an icon in front of the directory or file.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="cofl_sortorder" type="radio" default="asc" label="Default sort order" description="Default sort order of files.">
+					<option value="asc">Ascending</option>
+					<option value="desc">Descending</option>
+					<option value="none">Server</option>
+				</field>
+				<field name="cofl_showsort" type="radio" default="0" label="Show user sort option" description="Show arrows for sorting Asc/Desc to user.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="spacer05" type="spacer" default="" label="" description=""/>
+				<field name="cofl_boxleft" type="text" default="0" label="Lister box left position" description="In some templates the box with the list is pushed too far to the left. Change this value to move the box to the left (reduce value) or to the right (increase value)."/>
+				<field name="cofl_listleft" type="text" default="0" label="List left position" description="In some templates the list is pushed too far to the left. Change this value to move the list inside the box to the left (reduce value) or to the right (increase value)."/>
+				<field name="spacer06" type="spacer" default="" label="" description=""/>
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Module Class Suffix"/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
