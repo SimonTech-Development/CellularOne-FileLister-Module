@@ -1,11 +1,9 @@
-# CellularOne-FileLister-Module
-
-
 # CellularOne FileLister Module(COFLM)
 
  ![CellularOne image](http://simontech.me/module_releases/cellularone-filelister/cellular-one-logo.jpg "CellularOne")
 
-A [Cellualr](https://github.com/TEUCG/CellularOne-FileLister-Module) CellularOne module that will list files from a user defined directory . Will allow a user to list the files in the user defined directory on the front-end of a Joomla 3.9+ for download [Package](https://github.com/TEUCG/CellularOne-FileLister-Module/archive/master.zip).
+A [CellularOne module](https://github.com/TEUCG/CellularOne-FileLister-Module)  that will list files from a user defined directory . Will allow a user to list the files in the user defined directory on the front-end of a Joomla 3.9+ for download. Download a clone of the project
+[Master Zip Package](https://github.com/TEUCG/CellularOne-FileLister-Module/archive/master.zip) or download the latest Joomla installable [releases](https://github.com/TEUCG/CellularOne-FileLister-Module/releases).
 
 
 
