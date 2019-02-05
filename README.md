@@ -15,5 +15,5 @@ A [CellularOne module](https://github.com/TEUCG/CellularOne-FileLister-Module)  
 + *First Build*: 4th January, 2019
 + *Last Build*: 5th February, 2019
 + *Version*: 1.0.x
-+ *Copyright*: Copyright (C) 2015. All Rights Reserved
-+ *License*: GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-3.0.html
++ *Copyright*: Copyright (C) 2019. All Rights Reserved
++ *License*: GNU/GPL Version 3 or later - http://www.gnu.org/licenses/gpl-3.0.html
