@@ -36,6 +36,11 @@ Notes:
 > Notices are represented by hash sign (#)
 > Issues are represented by exclamation sign (!)
 
+CellularOne File Lister v1.0.5
+================================================================================
+~ usergroup permission now actually shows the delete buttons on frontend when assigned permisions
+
+
 CellularOne File Lister v1.0.0
 ================================================================================
 + dynamic choice of access by usergroup assigned

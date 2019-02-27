@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="3.9.2"
+	version="3.9.3"
 	client="site"
 	method="upgrade">
 	<name>CellularOne File Lister</name>
@@ -11,8 +11,8 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>tech@teucg.com</authorEmail>
 	<authorUrl>http://simontech.me</authorUrl>
-	<version>1.0.0</version>
-	<description>A CellularOne module that will list files from a directory set in the settings. Will allow a user to list the given directory fetched from the parameter settings.</description>
+	<version>1.0.5</version>
+	<description>A CellularOne module that will list files from a directory set in the settings. Will allow a user to list the given directory fetched from the parameter settings. - Commisioned by CellularOne</description>
 	<files>
 		<filename module="mod_cellonefilelister">mod_cellonefilelister.php</filename>
 		<filename>CHANGELOG.php</filename>

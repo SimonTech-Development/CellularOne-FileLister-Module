@@ -77,9 +77,11 @@ class ModCelloneFileListerHelper
 		$cofl_listleft = $params->get( 'cofl_listleft', '-10' );
 
 		$cofl_allowdelete = $params->get( 'cofl_allowdelete', '0' );
-		$cofl_allowdeleteall = $params->get( 'cofl_allowdeleteall', '0' );
-		$cofl_allowdeletereg = $params->get( 'cofl_allowdeletereg', '0' );
-		$cofl_allowdeleteedt = $params->get( 'cofl_allowdeleteedt', '0' );
+		// $cofl_allowdeleteall = $params->get( 'cofl_allowdeleteall', '0' );
+		//$cofl_allowdeletereg = $params->get( 'cofl_allowdeletereg', '0' );
+		//$cofl_allowdeleteedt = $params->get( 'cofl_allowdeleteedt', '0' );
+		$level_delete = $params->get('level_delete', '2');
+
 		$cofl_movedeleted = $params->get( 'cofl_movedeleted', '0' );
 		$cofl_movedeletedpath = $params->get( 'cofl_movedeletedpath', '' );
 		$cofl_disablegdthreshold = $params->get( 'cofl_disablegdthreshold', '0' );
@@ -93,6 +95,8 @@ class ModCelloneFileListerHelper
 
 		// Get current logged in user
 		$user = JFactory::getUser();
+		$groups = $user->get('groups');
+
 		$usr_name = $user->get('username');
 		if(stripos($usr_name, "/") !== false) {
 			$usr_name = "";
@@ -104,8 +108,9 @@ class ModCelloneFileListerHelper
 			$usr_name = "";
 		}
 
-		$show_delete = "0";
-
+		//$show_delete = "0";
+			$show_delete = ($cofl_allowdelete == "1" && (max($groups) >= $level_delete) ? "1" : "0");
+/*
 		if ($cofl_allowdelete === "1") {
 			if ($cofl_allowdeleteall === "1")
 				$show_delete = "1";
@@ -113,7 +118,7 @@ class ModCelloneFileListerHelper
 				$show_delete = "1";
 			if ($cofl_allowdeleteedt === "1" && $user->authorise('core.edit', 'com_content'))
 				$show_delete = "1";
-		}
+		}*/
 //echo "cofl_dirlocation=$cofl_dirlocation<br/>";
 //echo "cofl_dirlocationdefault=$cofl_dirlocationdefault<br/>";
 

@@ -1,13 +1,12 @@
 <?php
 /**
- * CellularOne File Lister Module Entry Point
  *
  * @package    Joomla
  * @subpackage Modules
  * @author SimonTech
  * @link http://simontech.me/
  * @license		GNU/GPL, see LICENSE.php
- * mod_cellonefilelister is free software. This version may have been modified pursuant
+ * mod_cellonefilelister is free software commisioned by cellularOne. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
